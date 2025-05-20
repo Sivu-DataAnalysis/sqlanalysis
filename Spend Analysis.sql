@@ -8,6 +8,7 @@ SET PurchaseDate = STR_TO_DATE(PuchaseDate,'%Y/%d/%m');
 ALTER TABLE spend
 ADD COLUMN Transaction_ID VARCHAR(255) UNIQUE PRIMARY KEY;
 
+**Checking for Duplicates
 SELECT TransactionID,COUNT(TransactionID) AS Count FROM spend GROUP BY TransactionID HAVING Count > 1;
 
 SELECT Category,Quantity,ROUND(AVG(Quantity) OVER(PARTITION BY Category ORDER BY Quantity DESC), 2) AS Avg_Quantity FROM spend;
